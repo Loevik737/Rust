@@ -1,0 +1,8 @@
+[package]
+name = "clock_cargo"
+version = "0.1.0"
+authors = ["Håvard Aspen Løvik <hloevi@live.no>"]
+
+[dependencies]
+time = "0.1.36"
+schedule_recv = "0.1.0"
