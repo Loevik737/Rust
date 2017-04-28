@@ -9,7 +9,7 @@ fn main() {
     let start = PreciseTime::now();
 
 
-    let x:u64 =20;
+    let x:u64 =600851475143;
     let factors = prime_factors(x);
     let end = PreciseTime::now();
     println!("Lardgest prime factor is: {:?} ", factors[factors.len()-1]);
