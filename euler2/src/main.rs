@@ -10,14 +10,14 @@ fn main() {
 
     let x:u64 =600851475143;
 
-    println!("Lardgest prime factor is: {} ", prime_factors(x));
+    println!("Lardgest prime factor is: {} ", lardgest_prime_factor(x));
 
     let end = PreciseTime::now();
 
     println!("Used: {} seconds", start.to(end));
 }
 
-fn prime_factors(mut x:u64) -> u64{
+fn lardgest_prime_factors(mut x:u64) -> u64{
     let mut factor:u64 = 0;
     let mut d:u64 = 2;
     while x > 1 {
