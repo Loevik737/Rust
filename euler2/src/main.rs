@@ -1,5 +1,6 @@
 /*
 The prime factors of 13195 are 5, 7, 13 and 29.
+
 What is the largest prime factor of the number 600851475143 ?
 */
 extern crate time;
@@ -8,26 +9,31 @@ use time::PreciseTime;
 fn main() {
     let start = PreciseTime::now();
 
-    println!("{:?}",prime(10));
+    let x:u64 =600851475143;
+
+    println!("Lardgest prime factor is: {} ", prime_factors(x));
 
     let end = PreciseTime::now();
 
-    println!("{} seconds", start.to(end));
+    println!("Used: {} seconds", start.to(end));
 }
 
-fn prime(x: u64)-> [bool;20]{
-    const X:usize = 20;
-    let mut array: [bool;X] = [true;X];
-    let mut k:u32 = 0;
-    for i in 1..(X as f64).sqrt() as u32 {
-        if array[i as usize] {
-            for j in 2..X as u32 {
-                if j == ((i^2) + i*k) {
-                    array[j as usize] = false;
-                    k+=1;
-                };
-            };
-        };
-    };
-    return array;
+fn prime_factors(mut x:u64) -> u64{
+    let mut factor:u64 = 0;
+    let mut d:u64 = 2;
+    while x > 1 {
+        while x % d == 0{
+            factor = d;
+            x = x / d;
+        }
+        d = d + 1;
+        if d*d > x{
+            if x > 1{
+                factor = x;
+            }
+            break;
+        }
+    }
+    return factor;
+>>>>>>> e3fb6aecbb8cbde2d021ff086b15cc0a2abf6fd4
 }
