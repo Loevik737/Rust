@@ -5,6 +5,7 @@ What is the largest prime factor of the number 600851475143 ?
 */
 extern crate time;
 use time::PreciseTime;
+
 fn main() {
     let start = PreciseTime::now();
 
@@ -34,4 +35,5 @@ fn lardgest_prime_factors(mut x:u64) -> u64{
         }
     }
     return factor;
+>>>>>>> e3fb6aecbb8cbde2d021ff086b15cc0a2abf6fd4
 }
