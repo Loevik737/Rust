@@ -35,5 +35,4 @@ fn prime_factors(mut x:u64) -> u64{
         }
     }
     return factor;
->>>>>>> e3fb6aecbb8cbde2d021ff086b15cc0a2abf6fd4
 }
