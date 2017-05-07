@@ -8,46 +8,40 @@ use time::PreciseTime;
 fn main() {
     let start = PreciseTime::now();
 
-    //lardgest_palindrome();
-    println!("{:?}", lardgest_palindrome() );
+    println!("{:?}", lardgest_palindrome(3) );
 
     let end = PreciseTime::now();
     println!("Used: {} seconds", start.to(end));
 }
 
-fn palindrome(mut n: f64) -> bool {
+fn palindrome(mut n: f64, base:f64) -> bool {
     let mut num:f64 = 0.0;
     let original:f64 = n;
-    let mut digits:f64 = (n.to_string().len() +1 ) as f64;
-    let base:f64 = 10.0;
-    let mut decimal_number:f64 = 0.0;
-    let mut digit: f64 = 0.0;
+    let digits:usize = n.to_string().len() + 1;
     if n > 9.0{
-        for i in 1..digits as usize{
-            decimal_number = n / base;
-            digit = n % base;
-            num = num + digit * base.powf(digits - i as f64);
-            n = (n - digit)/10.0;
+        for i in 1..digits{
+            num = num + n % base * base.powf(digits as f64 - i as f64);
+            n = (n - n % base)/10.0;
         }
-        return (num / 10.0 == original);
+        return num / 10.0 == original;
     }
     original == num
 }
 
-fn lardgest_palindrome() -> f64{
+fn lardgest_palindrome(factor_length:u32) -> f64{
     let mut lardgest:f64 = 0.0;
-    let mut x:f64 = 0.0;
     let mut a:usize = 0;
     let mut b:usize = 0;
-    for i in 100..1000{
-        for j in 100..1000{
-
-            x = (i*j) as f64;
-
-            if palindrome(x) && x > lardgest{
-                lardgest = x;
-                a = i;
-                b = j;
+    let mut x:f64 = 0.0;
+    for i in 10_usize.pow(factor_length-1)..10_usize.pow(factor_length){
+        for j in i..10_usize.pow(factor_length){
+            if j > i{
+                x = (i*j) as f64;
+                if palindrome(x, 10.0) && x > lardgest{
+                    lardgest = x;
+                    a = i;
+                    b = j;
+                }
             }
         }
     }
