@@ -51,11 +51,10 @@ fn main() {
 }
 
 fn adjacent_product(number:String, length:u32) -> u64{
-    let digits:u32 = number.len() as u32;
     let mut end:u32 = length;
     let mut lardgest_product:u64 = 0;
     let mut current_product:u64 = 1;
-    while end < digits{
+    while end < (number.len() as u32){
         current_product = 1;
         for i in (end - length)..end{
             current_product *= number.chars().nth(i as usize).unwrap().to_digit(10).unwrap() as u64;
@@ -65,5 +64,5 @@ fn adjacent_product(number:String, length:u32) -> u64{
         }
         end += 1;
     }
-    return lardgest_product
+    lardgest_product
 }
